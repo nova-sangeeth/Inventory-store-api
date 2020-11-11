@@ -25,3 +25,26 @@ class Batch(models.Model):
         else:
             super(Batch, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return f"{self.id} - {self.product}"
+
+        
+class Order(models.Model):
+    order_date = models. DateField()
+    batch = models.ForeignKey(Batch, on_delete=models.CASCADE, related_name="batch_in_order")
+    units = models.IntegerField()
+    company = models.CharField(max_length = 128)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            if self.units < self.batch.total:
+                self.batch.total -= self.units
+                self.batch.save()
+                super(Order,self).save(*args, **kwargs)
+            else:
+                return None
+
+    def __str__(self):
+        return f"{self.order_date} - {self.batch}"
+
+
