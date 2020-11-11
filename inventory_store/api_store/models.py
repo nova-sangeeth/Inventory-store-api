@@ -11,3 +11,17 @@ class Product(models.Model):
         return self.name
 
 
+class Batch(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    units = models.IntegerField() 
+    date_produced = models.DateField()
+    expiry_date = models.DateField()
+    total = models.IntegerField(blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.total = self.units
+            super(Batch, self).save(*args, **kwargs)
+        else:
+            super(Batch, self).save(*args, **kwargs)
+
