@@ -1,4 +1,6 @@
+from datetime import date
 from rest_framework import generics
+from rest_framework import serializers
 from rest_framework.response import Response
 
 from django.shortcuts import get_object_or_404
@@ -25,4 +27,9 @@ class OrderList(generics.ListCreateAPIView):
 
 class BatchDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Batch.objects.all()
+    serializer_class = batchSerializer
+
+
+class ExpiredProducts(generics.ListCreateAPIView):
+    queryset = Batch.objects.filter(expiry_date__lt=date.today())
     serializer_class = batchSerializer
