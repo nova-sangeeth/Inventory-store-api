@@ -8,8 +8,12 @@ class Product(models.Model):
     year_launched = models.IntegerField()
     manufacturer = models.CharField(max_length=128)
 
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
+
     def __str__(self):
-        return self.name
+        return f"{self.name} from -> {self.manufacturer}"
 
 
 class Batch(models.Model):
@@ -18,6 +22,10 @@ class Batch(models.Model):
     date_produced = models.DateField()
     expiry_date = models.DateField()
     total = models.IntegerField(blank=True)
+
+    class Meta:
+        verbose_name = 'Batch'
+        verbose_name_plural = 'Batches'
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -45,6 +53,10 @@ class Order(models.Model):
         Batch, on_delete=models.CASCADE, related_name="batch_in_order")
     units = models.IntegerField()
     company = models.CharField(max_length=128)
+
+    class Meta:
+        verbose_name = "Order"
+        verbose_name_plural = "Orders"
 
     def save(self, *args, **kwargs):
         if not self.id:
