@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <H1>Api route testing page.</H1>
+        <a class="btn btn-outline-primary" href="/products">Products</a>
+        <a class="btn btn-outline-primary" href="/batch-list">Batch List</a>
+        <a class="btn btn-outline-primary" href="/order_list">Order List</a>
+        <a class="btn btn-outline-primary" href="/batch_detail/<int:pk>/">Batch Detail</a>
+        <a class="btn btn-outline-primary" href="/expired">Expired</a>
+        <a class="btn btn-outline-primary" href="/fresh_products">fresh Products</a>
+        <a class="btn btn-outline-primary" href="/expiring_products">Expiring products</a>
+    {% endblock content %}
+</body>
+</html>
