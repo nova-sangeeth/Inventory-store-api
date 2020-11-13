@@ -33,3 +33,10 @@ class BatchDetail(generics.RetrieveUpdateDestroyAPIView):
 class ExpiredProducts(generics.ListCreateAPIView):
     queryset = Batch.objects.filter(expiry_date__lt=date.today())
     serializer_class = batchSerializer
+
+class FreshProducts(generics.ListCreateAPIView):
+    queryset = Batch.objects.filter(expiry_date__gt=date.today())
+    # queryset = Batch.objects.filter(expiry_date__gt=date.today()+datetime(days=3))
+    serializer_class = batchSerializer
+
+    
