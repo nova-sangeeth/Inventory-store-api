@@ -1,5 +1,5 @@
 from django.urls import path
-from .api import ProductList, BatchList, OrderList, BatchDetail, ExpiredProducts
+from .api import ProductList, BatchList, OrderList, BatchDetail, ExpiredProducts, FreshProducts
 
 urlpatterns = [
     path("products/", ProductList.as_view(), name="product_list"),
@@ -7,4 +7,5 @@ urlpatterns = [
     path("order_list/", OrderList.as_view(), name="order_list"),
     path("batch_detail/<int:pk>/", BatchDetail.as_view(), name="batch_detail"),
     path("expired/", ExpiredProducts.as_view(), name="expired"),
+    path("fresh_products", FreshProducts.as_view(), name='fresh_products'),
 ]
