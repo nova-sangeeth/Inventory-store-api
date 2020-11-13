@@ -1,7 +1,9 @@
 from django.urls import path
 from .api import ProductList, BatchList, OrderList, BatchDetail, ExpiredProducts, FreshProducts, ExpiringProducts
+from .views import index
 
 urlpatterns = [
+    path("", index, name="index"), 
     path("products/", ProductList.as_view(), name="product_list"),
     path("batch_list/", BatchList.as_view(), name="batch_list"),
     path("order_list/", OrderList.as_view(), name="order_list"),
