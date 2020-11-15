@@ -6,7 +6,7 @@ from .models import Order, Product, Batch
 class orderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
-        fields = '__all__'
+        exclude = ('date_added',)
 
 
 class batchSerializer(serializers.ModelSerializer):
@@ -14,7 +14,7 @@ class batchSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Batch
-        fields = '__all__'
+        exclude = ('date_added',)
 
 
 class productSerializer(serializers.ModelSerializer):
@@ -22,4 +22,4 @@ class productSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ('date_added',)
