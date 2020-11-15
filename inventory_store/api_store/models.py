@@ -7,6 +7,7 @@ class Product(models.Model):
     name = models.CharField(max_length=128)
     year_launched = models.IntegerField()
     manufacturer = models.CharField(max_length=128)
+    date_added = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:
         verbose_name = 'Product'
@@ -22,6 +23,7 @@ class Batch(models.Model):
     date_produced = models.DateField()
     expiry_date = models.DateField()
     total = models.IntegerField(blank=True)
+    date_added = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:
         verbose_name = 'Batch'
@@ -53,6 +55,7 @@ class Order(models.Model):
         Batch, on_delete=models.CASCADE, related_name="batch_in_order")
     units = models.IntegerField()
     company = models.CharField(max_length=128)
+    date_added = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:
         verbose_name = "Order"
