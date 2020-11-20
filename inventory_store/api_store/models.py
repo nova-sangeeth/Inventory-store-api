@@ -3,6 +3,13 @@ from datetime import date
 # Create your models here.
 
 
+class sale_details(models.Model):
+    sale_name = models.CharField(max_length=128)
+    sale_date = models.DateField()
+    price_cuts = models.CharField(max_length=128)
+
+    
+
 class Product(models.Model):
     name = models.CharField(max_length=128)
     year_launched = models.IntegerField()
