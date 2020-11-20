@@ -1,6 +1,6 @@
 from django.db.models import fields
 from rest_framework import serializers
-from .models import Order, Product, Batch
+from .models import Order, Product, Batch, sale_details
 
 
 class orderSerializer(serializers.ModelSerializer):
@@ -22,4 +22,10 @@ class productSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
+        exclude = ('date_added',)
+
+
+class saleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = sale_details
         exclude = ('date_added',)
