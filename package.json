@@ -1,0 +1,25 @@
+{
+  "name": "inventory-store-api",
+  "version": "1.0.0",
+  "description": "node-backend and postgres database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":  "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nova-sangeeth/Inventory-store-api.git"
+  },
+  "author": "nova-sangeeth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nova-sangeeth/Inventory-store-api/issues"
+  },
+  "homepage": "https://github.com/nova-sangeeth/Inventory-store-api#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1"
+  }
+}
