@@ -96,3 +96,18 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
+
+exports.create = (req, res) => {
+  const item_data = {
+    title: req.body.title,
+    brand: req.body.brand,
+  };
+
+  ItemsDB.create(item_data)
+    .then((data) => {
+      res.send.data;
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+};
