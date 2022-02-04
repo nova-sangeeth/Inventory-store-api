@@ -63,3 +63,20 @@ exports.find_title = (req, res) => {
     })
     .catch((err) => res.status(500).send(err));
 };
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  ItemsDB.destroy({
+    where: {
+      id: id,
+    },
+  })
+    .then((data) => {
+      if (data == 1) {
+        res.send({ message: "Item is now deleted" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: err.message });
+    });
+};
