@@ -111,3 +111,22 @@ exports.create = (req, res) => {
       res.status(500).send(err);
     });
 };
+
+exports.update = (req, res) => {
+  const id = req.params.id;
+  const item_data = {
+    title: req.body.title,
+    brand: req.body.brand,
+  };
+  ItemsDB.update(item_data, {
+    where: {
+      id: id,
+    },
+  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+};
