@@ -80,3 +80,19 @@ exports.delete = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
+
+exports.deleteAll = (req, res) => {
+  console.log("delete all " + "req.body.id" + req.body);
+  ItemsDB.destroy({
+    where: {},
+    truncate: true,
+  })
+    .then((data) => {
+      if (data == 1) {
+        res.send({ message: "All items are now deleted" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ message: err.message });
+    });
+};
